@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
- <head>
- <title>Intro to Node and MongoDB</title>
- </head>
- 
- <body>
- <h1>Into to Node and MongoDB</h1>
- <form method="post" action="/addname">
- <label>Enter Your Name</label><br>
- <input type="text" name="firstName" placeholder="Enter first name..." required>
- <input type="text" name="lastName" placeholder="Enter last name..." required>
- <input type="submit" value="Add Name">
- </form>
- </body>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+
+    <title>Upload images to server using Node JS</title>
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+    <script src="Scripts/jquery.form.min.js"></script>
+</head>
+<body>
+
+    <form id="frmUploader" enctype="multipart/form-data" action="api/Upload/" method="post">
+       <input type="file" name="imgUploader" multiple />
+        <input type="submit" name="submit" id="btnSubmit" value="Upload" /> </form>
+</body>
 </html>

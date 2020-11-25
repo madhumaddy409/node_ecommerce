@@ -67,7 +67,8 @@ exports.postSignup = async (req, res) =>  {
 exports.usersDet = (req, res) => {
     // res.send("Hello")
     var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost:27017/";
+var url ="mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
+// var url = "mongodb://localhost:27017/";
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;

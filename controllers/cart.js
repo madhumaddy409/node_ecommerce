@@ -21,7 +21,8 @@ exports.postCart = (req, res) => {
 
 exports.getCart = async (req, res) => {
     var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb://localhost:27017/";
+    var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
+    // var url = "mongodb://localhost:27017/";
     const user = await User.findById(req.user.id);
     // res.json(user);
     
