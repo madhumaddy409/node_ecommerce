@@ -54,12 +54,12 @@ app.use("/api", prodRoutes)
 app.use("/api",userRoutes)
 app.use("/api",cartRoutes)
 // app.use("/api",uploadRoutes)
+const port=Number(process.env.PORT || 3000);
+// const port = 1234;
 
-const port = 1234;
 
-// const port1 = 8080;
 app.listen(port, () => {
-    return console.log("Server is up and running on 1234");
+    return console.log("Server is up and running on 3000");
   });
 
 
