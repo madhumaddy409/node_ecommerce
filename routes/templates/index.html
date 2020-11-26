@@ -104,31 +104,46 @@ body {
 </style> 
 
 <body> 
-    <div class="login-page">
+  <div id="register-page">
+    <div class="form">
+   
+      <!-- <form class="registerForm" > -->
+        <input type="text" id="reg_username" placeholder="username"/>
+        <input type="email" id="reg_email" placeholder="email"/>
+        <input type="password" id="reg_password" placeholder="password"/>
+        <button type="submit" id="register_btn" onclick="register()">regiter</button>
+        <p class="message">already registered? please login <a href="javascript:void(0)" id="showSignin">login</a></p>
+      <!-- </form> -->
+    </div>
+  </div>
+    <div id="login-page">
         <div class="form">
        
-          <!-- <form class="login-form" > -->
-            <input type="text" id="username" placeholder="username"/>
-            <input type="password" id="password" placeholder="password"/>
-            <button type="submit" onclick="login()">login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
+          <!-- <form class="loginForm" > -->
+            <input type="text" id="login_email" placeholder="username"/>
+            <input type="password" id="login_password" placeholder="password"/>
+            <button type="submit" id="login_btn" onclick="login()">login</button>
+            <p class="message">Not registered? <a href="javascript:void(0)" id="showSignUp">Create an account</a></p>
           <!-- </form> -->
         </div>
       </div>
 
 </body> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script type="text/javascript">
+//login
 function login() {
-    username = document.querySelector('#username').value;
-    password = document.querySelector('#password').value;
+    username = document.querySelector('#login_email').value;
+    password = document.querySelector('#login_password').value;
     console.log(username,password)
     const data = { email: username,
                     password: password
 
     };
 
-    // fetch('http://localhost:3000/api/login/', {
-    fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    fetch('http://localhost:3000/api/login/', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -147,6 +162,7 @@ function login() {
     const msg = data.message
     if(token) {
         location.href = 'api/upload'
+        // console.log(token)
 
     } else {
         alert(msg)
@@ -157,6 +173,81 @@ function login() {
 
     });
 }
+
+
+//register
+function register() {
+    username = document.querySelector('#reg_username').value;
+    email = document.querySelector('#reg_email').value;
+    password = document.querySelector('#reg_password').value;
+    console.log(username,password)
+    const data = { email: email,
+                    password: password,
+                    username: username
+
+    };
+    console.log(data)
+
+    fetch('http://localhost:3000/api/signup/', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    method: 'POST', // or 'PUT'
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log('Success:', data);
+    const token = data.token
+    // localStorage.setItem('token', token)
+
+    // const savedToken = localStorage.getItem('token')
+    // console.log(savedToken)
+    
+    const msg = data.message
+    if(token) {
+        location.href = './'
+        console.log(token)
+
+    } else {
+        alert(msg)
+    }
+    })
+    .catch((error) => {
+    console.error('Error:', error);
+
+    });
+
+
+
+
+
+  }
+
+
+
+
+$(document).ready(function(){
+  $("#register-page").hide();
+    $("#showSignUp").click(function(){
+        $("#login-page").hide();
+        $("#register-page").show();
+
+    });
+
+    $("#showSignin").click(function(){
+        $("#login-page").show();
+        $("#register-page").hide();
+
+    });
+
+});
+
+
+
+
+
    
 
 </script>
