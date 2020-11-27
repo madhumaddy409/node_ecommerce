@@ -11,6 +11,10 @@ var productSchema = new Schema(
             maxlength: 30,
             trim: true
         },
+        productImage:{
+            type: String,
+    
+        },
         category: {
             type: String,
             required: true,

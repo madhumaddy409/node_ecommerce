@@ -62,6 +62,11 @@ router.post(
     }
   });  
 
+  router.get("/profile", function(req, res) {
+
+    res.sendFile(__dirname + "/templates/profile.html");
+
+});
 
 
 module.exports = router;

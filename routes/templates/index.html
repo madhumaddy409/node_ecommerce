@@ -142,11 +142,12 @@ function login() {
 
     };
 
-    // fetch('http://localhost:3000/api/login/', {
-    fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    fetch('http://localhost:3000/api/login/', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
+
     },
     body: JSON.stringify(data),
     })
@@ -154,6 +155,7 @@ function login() {
     .then(data => {
     console.log('Success:', data);
     const token = data.token
+
     localStorage.setItem('token', token)
 
     const savedToken = localStorage.getItem('token')
@@ -161,7 +163,7 @@ function login() {
     
     const msg = data.message
     if(token) {
-        location.href = 'api/upload'
+        location.href = 'api/profile'
         // console.log(token)
 
     } else {
@@ -174,6 +176,28 @@ function login() {
     });
 }
 
+function header(){
+  localStorage.setItem('token', token)
+
+  const savedToken = localStorage.getItem('token')
+  console.log(savedToken)
+  fetch('http://localhost:3000/api/me/', {
+  // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    method: 'POST', // or 'PUT'
+    headers: {
+        'Content-Type': 'application/json',
+        'token' : savedToken
+
+    },
+    body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log('Success:', data);
+    const token = data.token
+
+  });
+}
 
 //register
 function register() {
@@ -207,7 +231,7 @@ function register() {
     
     const msg = data.message
     if(token) {
-        location.href = './'
+        location.href = './login'
         console.log(token)
 
     } else {

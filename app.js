@@ -13,8 +13,11 @@ const app = express();
 const prodRoutes = require("./routes/product")
 const userRoutes = require("./routes/user")
 const cartRoutes = require("./routes/cart")
+const categoryRoutes = require("./routes/category")
+const subCategoryRoutes = require("./routes/subCategory")
 
 const uploadRoutes = require("./routes/fileupload")
+
 
 // mongodb+srv://root:<password>@cluster0.ue8qu.mongodb.net/<dbname>?retryWrites=true&w=majority
 
@@ -41,6 +44,11 @@ app.use("/api", prodRoutes)
 app.use("/api",userRoutes)
 app.use("/api",cartRoutes)
 app.use("/api",uploadRoutes)
+app.use(express.static('public'));
+app.use("/api",categoryRoutes)
+app.use("/api",subCategoryRoutes)
+
+
 const port=Number(process.env.PORT || 3000);
 
 
@@ -56,6 +64,13 @@ app.listen(port, () => {
 
 app.get("/", function(req, res) {
 
+    res.sendFile(__dirname + "/public/home.html");
+
+});
+
+app.get("/login", function(req, res) {
+
+    // res.sendFile(__dirname + "/public/index.html");
     res.sendFile(__dirname + "/routes/templates/index.html");
 
 });
