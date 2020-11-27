@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if(token)
     {
         
-        fetch('http://localhost:3000/api/me/', {
-            // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+        // fetch('http://localhost:3000/api/me/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
               method: 'GET', // or 'PUT'
               headers: {
                   'Content-Type': 'application/json',
@@ -87,8 +87,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //products
-            
-    fetch('http://localhost:3000/api/product', {
+    fetch('https://nodetestcommerce.herokuapp.com/api/product/',{
+    // fetch('http://localhost:3000/api/product', {
     method: 'GET', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -159,8 +159,9 @@ document.addEventListener("DOMContentLoaded", function() {
     //category
         
 
-        // fetch('http://localhost:3000/api/product', {
-        fetch('http://localhost:3000/api/category', {
+        
+        // fetch('http://localhost:3000/api/category', {
+        fetch('https://nodetestcommerce.herokuapp.com/api/category/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -190,8 +191,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         //subcategory
-         // fetch('http://localhost:3000/api/product', {
-        fetch('http://localhost:3000/api/subcategory', {
+        
+        // fetch('http://localhost:3000/api/subcategory', {
+        fetch('https://nodetestcommerce.herokuapp.com/api/subcategory/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
