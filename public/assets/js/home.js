@@ -30,8 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
               div.innerHTML = div.innerHTML + `
                     <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Track Order</a></li>
-                    <li><a href="./login">Login</a></li>
-                    <li><a href="./login">Signup</a></li>
                     <li><a href="./api/profile">${user}</a></li>
                     
                     <li class="dropdown">
@@ -61,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
               div.innerHTML = div.innerHTML + `
                     <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Track Order</a></li>
                     <li><a href="./login">Login</a></li>
                     <li><a href="./login">Signup</a></li>
                     
