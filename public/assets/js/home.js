@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     {
         
         // fetch('http://localhost:3000/api/me/', {
-            fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
               method: 'GET', // or 'PUT'
               headers: {
                   'Content-Type': 'application/json',
