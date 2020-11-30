@@ -7,11 +7,16 @@ const fetchProductToModal = (prodId) => {
     document.querySelector('#modalImage').src = selectedProduct.productImage;
     document.querySelector('#modalDesc').textContent = selectedProduct.description;
     document.querySelector('#modalPrice').textContent = selectedProduct.price;
+    document.querySelector('#addToCartButton').onclick = function() { 
+        addToCart(prodId)
+    }
+    
+
 
     $("#myModal").modal('show')
    }
 
-const addToCart = (prodId) => {
+    const addToCart = (prodId) => {
     // console.log(prodId)
     const user = JSON.parse(localStorage.getItem('user'))
     const user_id = user._id
@@ -206,7 +211,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <h3 id="modalTitle"></h3>
                         <p>Price : <strong id="modalPrice"></strong>  </p>
                         <p id="modalDesc"></p>
-                        <p><button class="btn btn-success" onclick="addToCart('${product._id}')" role="button">Add To Cart</button> 
+                        <p>${product._id}</p>
+                        <p><button class="btn btn-success" id = "addToCartButton" role="button">Add To Cart</button> 
                         
                         </p>
                     </div>
