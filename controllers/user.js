@@ -122,7 +122,7 @@ exports.postLogin =async (req, res) => {
         payload,
         "randomString",
         {
-          expiresIn: 3600
+          expiresIn: 86400
         },
         (err, token) => {
           if (err) throw err;
@@ -138,3 +138,6 @@ exports.postLogin =async (req, res) => {
       });
     }
   }
+
+
+

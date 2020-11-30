@@ -1,5 +1,66 @@
+const fetchProductToModal = (prodId) => {
+    console.log(prodId)
+    const products = JSON.parse(localStorage.getItem('products'))
+    const selectedProduct = products.find((product) => prodId === product._id)
+    console.log(selectedProduct);
+    document.querySelector('#modalTitle').textContent = selectedProduct.name;
+    document.querySelector('#modalImage').src = selectedProduct.productImage;
+    document.querySelector('#modalDesc').textContent = selectedProduct.description;
+    document.querySelector('#modalPrice').textContent = selectedProduct.price;
+
+    $("#myModal").modal('show')
+   }
+
+const addToCart = (prodId) => {
+    // console.log(prodId)
+    const user = JSON.parse(localStorage.getItem('user'))
+    const user_id = user._id
+    const product_id = prodId
+    const quantity = 1
+
+    token = localStorage.getItem('token')
+    const data = { user_id: user_id ,
+                    product_id: product_id,
+                    quantity: quantity
+    
+                };
+
+    fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
+    // fetch('http://localhost:3000/api/cart', {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+            'token' : token
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log('Success:', data);
+        const msg = data.message
+        if(msg === "alread in cart"){
+            alert(msg)
+        }else{
+            alert("item added to cart")
+        }
+        
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+
+
+
+
+    
+    
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 
+
+
+//    fetchProductToModal("5fbd2ae32ca6a1057c9dd1c8");
 
 
 
@@ -25,12 +86,17 @@ document.addEventListener("DOMContentLoaded", function() {
               .then(data => {
               console.log('Success:', data);
               user = data.username
+              localStorage.setItem('user',JSON.stringify(data))
               var div = document.querySelector('#user')
 
               div.innerHTML = div.innerHTML + `
                     <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Track Order</a></li>
                     <li><a href="./api/profile">${user}</a></li>
+                    <li style="margin-top: 1rem">
+                            <button  type="submit" class="btn btn-primary" onclick="logout()">logout</button>
+                        
+                     </li>
                     
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
@@ -108,15 +174,55 @@ document.addEventListener("DOMContentLoaded", function() {
                 <div class="thumbnail product-box">
                    <div style="height: 200px; width: auto"> <img style="height: inherit" class="img-fluid" src=${product.productImage} alt="" /> </div>
                     <div class="caption">
+                        
                         <h3><a href="#">${product.name} </a></h3>
                         <p>Price : <strong>${product.price}</strong>  </p>
                         <p>${product.description}</p>
-                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                       
+                        <p><button class="btn btn-success" onclick="addToCart('${product._id}')" role="button">Add To Cart</button> 
+                        
+                        <button type="button" onclick="fetchProductToModal('${product._id}')" class="btn btn-info btn-lg">Product Details</button>
+                        </p>
                     </div>
                 </div>
             </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content text-center">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
 
+                  <div class="modal-body">
+
+                  <div style="height: 100px; width: auto"> <img id="modalImage" style="height: inherit" class="img-fluid" src=${product.productImage} alt="" /> </div>
+                    <div class="caption">
+                        
+                        <h3 id="modalTitle"></h3>
+                        <p>Price : <strong id="modalPrice"></strong>  </p>
+                        <p id="modalDesc"></p>
+                        <p><button class="btn btn-success" onclick="addToCart('${product._id}')" role="button">Add To Cart</button> 
+                        
+                        </p>
+                    </div>
+                    </div>
+                 
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+          
+                
     `
 
 
@@ -131,7 +237,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         <h3><a href="#">${product.name} </a></h3>
                         <p>Price : <strong>${product.price}</strong>  </p>
                         <p>${product.description}</p>
-                        <p><a href="#" class="btn btn-success" role="button">Add To Cart</a> <a href="#" class="btn btn-primary" role="button">See Details</a></p>
+                        
+                        <p><button class="btn btn-success" onclick="addToCart('${product._id}')" role="button">Add To Cart</button>
+                        </p>
+                        <button type="button" onclick="fetchProductToModal('${product._id}')" class="btn btn-info btn-lg">Product Details</button>
                     </div>
                 </div>
             </div>
@@ -227,6 +336,15 @@ document.addEventListener("DOMContentLoaded", function() {
         //end of page load
 });
 
+
+
+function logout(){
+
+    localStorage.removeItem('token')
+    msg = "logout succesfully"
+    alert(msg) ? "" : location.reload();
+    
+}
 
 
 

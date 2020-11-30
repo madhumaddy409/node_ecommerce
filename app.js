@@ -15,6 +15,7 @@ const userRoutes = require("./routes/user")
 const cartRoutes = require("./routes/cart")
 const categoryRoutes = require("./routes/category")
 const subCategoryRoutes = require("./routes/subCategory")
+const orderRoutes = require("./routes/order")
 
 const uploadRoutes = require("./routes/fileupload")
 
@@ -47,6 +48,7 @@ app.use("/api",uploadRoutes)
 app.use(express.static('public'));
 app.use("/api",categoryRoutes)
 app.use("/api",subCategoryRoutes)
+app.use("/api",orderRoutes)
 
 
 const port=Number(process.env.PORT || 3000);
@@ -74,3 +76,4 @@ app.get("/login", function(req, res) {
     res.sendFile(__dirname + "/routes/templates/index.html");
 
 });
+

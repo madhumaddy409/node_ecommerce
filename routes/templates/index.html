@@ -182,7 +182,7 @@ function header(){
   const savedToken = localStorage.getItem('token')
   console.log(savedToken)
   // fetch('http://localhost:3000/api/me/', {
-  fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+  fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',

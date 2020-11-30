@@ -4,7 +4,7 @@ var router = express.Router()
 
 const { check, validationResult} = require("express-validator");
 
-const { postSignup ,postLogin ,usersDet } = require("../controllers/user")
+const { postSignup ,postLogin ,usersDet  } = require("../controllers/user")
 
 const {auth} = require("../middleware/auth")
 
@@ -67,6 +67,16 @@ router.post(
     res.sendFile(__dirname + "/templates/profile.html");
 
 });
+
+router.get("/placeOrder", function(req, res) {
+
+  res.sendFile(__dirname + "/templates/order.html");
+
+});
+
+
+
+
 
 
 module.exports = router;

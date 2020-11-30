@@ -1,7 +1,10 @@
 <!DOCTYPE html> 
 <html> 
 <head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+   
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
 <style>
     body{
     margin-top:20px;
@@ -165,73 +168,90 @@
                     </div>
                     </div>
                 </div>
-                <div class="row gutters-sm">
-                    <div class="col-sm-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                        <small>Web Design</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Website Markup</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>One Page</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Mobile Template</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Backend API</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-sm-6 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                        <small>Web Design</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Website Markup</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>One Page</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Mobile Template</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <small>Backend API</small>
-                        <div class="progress mb-3" style="height: 5px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
+
+                <div id="cartProduct"></div>
                 </div>
             </div>
             </div>
         </div>
+
+
+                         
+
     </body>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript">
+        
+
+    const fetchProductToModal = (prodId) => {
+    console.log(prodId)
+    const products = JSON.parse(localStorage.getItem('products'))
+    const selectedProduct = products.find((product) => prodId === product._id)
+    console.log(selectedProduct);
+    let orderProdId = localStorage.setItem('orderProdId',prodId)
+    
+    window.location.href = "./placeOrder";
+    // window.$('#myModal').modal('show');
+    // $('#myModal').modal('show');
+    
+   }
+      
+  
+        const token = localStorage.getItem('token')
+
+         const cartProductPlaced = (prodId) => {
+
+                
+                console.log(prodId)
+                user = JSON.parse(localStorage.getItem('user'))
+                userId = user._id
+             
+
+                const data = { product_id:prodId,
+                    user_id:userId,
+                    quantity:1,
+                    orderType:"COD",
+                    userName:"Madhu",
+                    PhoneNumbser:"8660058433",
+                    city:"Shimogga",
+                    State:"karnataka",
+                    Address:"hosamane 6th main",
+                    Status:"Active"
+                
+                };
+
+                console.log(data)
+                // fetch('http://localhost:3000/api/order', {
+                // method: 'POST', // or 'PUT'
+                // headers: {
+                //     'Content-Type': 'application/json',
+                //     'token': token
+                // },
+                // body: JSON.stringify(data),
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                // console.log('Success:', data);
+                // let msg = "order placed"
+                // alert(msg) ? "" : location.reload();
+                // })
+                // .catch((error) => {
+                // console.error('Error:', error);
+                // });
+
+            }
+        
+     
+         
+
+        
+    
+    
+    
         document.addEventListener("DOMContentLoaded", function() {
   
-
-        const savedToken = localStorage.getItem('token')
-        console.log(savedToken)
+            const savedToken = localStorage.getItem('token')
+            console.log(savedToken)
             // fetch('http://localhost:3000/api/me/', {
             fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
             method: 'GET', // or 'PUT'
@@ -253,13 +273,133 @@
             .catch((error) => {
             console.error('Error:', error);
             });
+
+
+
+
+            //
+
+            // fetch('http://localhost:3000/api/cart/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+                'token': savedToken
+            },
+            // body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Success:', data);
+            products = JSON.parse(localStorage.getItem('products'))
+            console.log(products)
+            
+           
+
+            const selectedProduct = []
+            for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                const _id = data[key] 
+
+                const prod = products.find((product) => _id === product._id);
+                selectedProduct.push(prod);
+                }
+            }
+  
+            console.log(selectedProduct);
+
+            selectedProduct.forEach(cartProduct => {
+            var div = document.querySelector('#cartProduct')
+            
+            
+            div.innerHTML = div.innerHTML + `
+                <div class="row gutters-sm ">
+                    <div class="col-sm-12 mb-4">
+                    <div class="card h-100">
+
+                        <div class="col-md-4 text-center col-sm-6 col-xs-6" id="cartProduct">
+                <div class="thumbnail product-box">
+                   <div style="height: 200px; width: auto"> <img style="height: inherit" class="img-fluid" src=${cartProduct.productImage} alt="" /> </div>
+                    <div class="caption">
+                        
+                        <h3><a href="#">${cartProduct.name} </a></h3>
+                        <p>Price : <strong>${cartProduct.price}</strong>  </p>
+                        <p>${cartProduct.description}</p>
+                       
+                        
+                        
+                        <button type="button" onclick="fetchProductToModal('${cartProduct._id}')" class="btn btn-info btn-lg">Place Order</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                            
+                                <!-- Modal content-->
+                                <div class="modal-content text-center">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4>
+                                </div>
+        
+                                <div class="modal-body">
+        
+                                <div style="height: 100px; width: auto"> <img id="modalImage" style="height: inherit" class="img-fluid" src=${cartProduct.productImage} alt="" /> </div>
+                                    <div class="caption">
+                                        
+                                        <h3 id="modalTitle"></h3>
+                                        <p>Price : <strong id="modalPrice"></strong>  </p>
+                                        <p id="modalDesc"></p>
+                                        <p><button class="btn btn-success" onclick="addToCart('${cartProduct._id}')" role="button">Add To Cart</button> 
+                                        
+                                        </p>
+                                    </div>
+                                    </div>
+                                
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                                
+                            </div>
+                            </div>
+                            
+                        </div>
+
+ 
+                    
+                    </div>
+                    </div>
+                </div>
+                
+
+                
+                
+        
+            `
+            });
+
+            
+           
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+ 
         });
     
     
         
     
         
-        </script>
+
     
+    
+    
+    </script>
     
 </html> 
