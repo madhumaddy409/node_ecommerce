@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //products
-    fetch('https://nodetestcommerce.herokuapp.com/api/product/',{
+    fetch('https://nodetestcommerce.herokuapp.com/api/product',{
     // fetch('http://localhost:3000/api/product', {
     method: 'GET', // or 'PUT'
     headers: {
