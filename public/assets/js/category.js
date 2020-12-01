@@ -189,9 +189,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const data1 = { category: cat };
 
     //products
-    fetch('https://nodetestcommerce.herokuapp.com/api/product/',{
+    fetch('https://nodetestcommerce.herokuapp.com/api/categoryProd',{
     // fetch('http://localhost:3000/api/categoryProd', {
-    method: 'GET', // or 'PUT'
+    method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
     },
