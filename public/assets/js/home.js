@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         div.innerHTML = div.innerHTML + `
                 <li class="list-group-item">
-                <a href="http://localhost:3000/category${'?cat='+category.categoryName}">${category.categoryName}</a>
+                <a href="https://nodetestcommerce.herokuapp.com/category${'?cat='+category.categoryName}">${category.categoryName}</a>
                    
                     <span class="label label-primary pull-right">234</span>
                 </li>
