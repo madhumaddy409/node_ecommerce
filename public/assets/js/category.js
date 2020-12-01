@@ -63,6 +63,10 @@ const fetchProductToModal = (prodId) => {
 
 document.addEventListener("DOMContentLoaded", function() {
 
+    let params = new URLSearchParams(document.location.search.substring(1));
+    let cat = params.get("cat");
+    console.log(cat)
+
     // var id = "10";
     // $('#a_tag_id').attr('href','http://localhost:3000/category'+id);
 
@@ -182,21 +186,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-
+    const data1 = { category: cat };
 
     //products
     fetch('https://nodetestcommerce.herokuapp.com/api/product/',{
-    // fetch('http://localhost:3000/api/product', {
-    method: 'GET', // or 'PUT'
+    // fetch('http://localhost:3000/api/categoryProd', {
+    method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
     },
-    // body: JSON.stringify(data),
+    body: JSON.stringify(data1),
     })
     .then(response => response.json())
     .then(data => {
     console.log('Success:', data);
-
+    console.log(data)
     //product(local storage)
     localStorage.setItem('products',JSON.stringify(data))
     

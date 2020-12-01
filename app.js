@@ -69,6 +69,12 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/public/home.html");
 
 });
+app.get("/category", function(req, res) {
+
+    res.sendFile(__dirname + "/public/category.html");
+
+});
+
 
 app.get("/login", function(req, res) {
 

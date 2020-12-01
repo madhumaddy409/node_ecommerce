@@ -3,12 +3,14 @@ var router = express.Router()
 
 
 
-const { postCategory ,getCategory } = require("../controllers/category")
+const { postCategory ,getCategory ,getCategoryProd } = require("../controllers/category")
 
 
 router.post("/category", postCategory)
 
 router.get("/category", getCategory)
+
+router.post('/categoryProd', getCategoryProd)
 
 
 
