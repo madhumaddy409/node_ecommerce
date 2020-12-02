@@ -259,18 +259,24 @@
     
     
         document.addEventListener("DOMContentLoaded", function() {
+
+			let user =JSON.parse(localStorage.getItem('user'))
+            let userId = user._id
+
+            let data2 = { user_id : userId}
+
   
             const savedToken = localStorage.getItem('token')
             console.log(savedToken)
            
-            // fetch('http://localhost:3000/api/cart/', {
-            fetch('https://nodetestcommerce.herokuapp.com/api/cart/',{
-            method: 'GET', // or 'PUT'
+            // fetch('http://localhost:3000/api/cartProducts/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
+            method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
                 'token': savedToken
             },
-            // body: JSON.stringify(data),
+            body: JSON.stringify(data2),
             })
             .then(response => response.json())
             .then(data => {

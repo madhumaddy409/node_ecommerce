@@ -30,6 +30,9 @@ const fetchProductToModal = (prodId) => {
     
                 };
 
+    
+    
+
     fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
     // fetch('http://localhost:3000/api/cart', {
         method: 'POST', // or 'PUT'
@@ -100,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         div.innerHTML = div.innerHTML + `
                                 <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#">Track Order</a></li>
+                                <li><a href="./api/trackOrder">Track Order</a></li>
                                 <li><a href="./api/profile">${user}</a></li>
                                 <li style="margin-top: 1rem">
                                         <button  type="submit" class="btn btn-primary" onclick="logout()">logout</button>
@@ -380,6 +383,13 @@ document.addEventListener("DOMContentLoaded", function() {
 function logout(){
 
     localStorage.removeItem('token')
+    localStorage.removeItem('orderProdId')
+
+    localStorage.removeItem('user')
+    
+
+
+    
     msg = "logout succesfully"
     alert(msg) ? "" : location.reload();
     

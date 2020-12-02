@@ -8,7 +8,9 @@ const { postCart ,getCart } = require("../controllers/cart")
 
 router.post("/cart",auth, postCart)
 
-router.get("/cart",auth, getCart)
+router.post("/cartProducts",auth, getCart)
+
+
 
 
 // router.get("/order", postOrder)

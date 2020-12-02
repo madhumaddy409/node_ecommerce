@@ -36,35 +36,12 @@ exports.postCart = async(req, res) => {
 
 
 exports.getCart = async (req, res) => {
-    var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
-    // var url = "mongodb://localhost:27017/";
-    const user = await User.findById(req.user.id);
-    // res.json(user);
-    
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("ecommerce");
-      var query = {user_id:user._id }
-      dbo.collection("cartproducts").find(query).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(query);
-        console.log(result)
-
-      var products = [];
-     
-      result.forEach(productId)
-
-      function productId(item,i)
-      {
-        products[i] = item.product_id
-      }
-      
-      console.log(products)
-      res.send(products)
-    
-        
-        
+  const { user_id} = req.body;
+ 
+    let cart = await Cart.find({
+        user_id
       });
-    });
-};
+
+     console.log(cart)
+     res.send(cart)
+}

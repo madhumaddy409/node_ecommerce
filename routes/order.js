@@ -7,6 +7,6 @@ const { postOrder, getOrder } = require("../controllers/order")
 
 router.post("/order", auth, postOrder)
 
-router.get("/order",auth, getOrder)
+router.post("/orderDetailes",auth, getOrder)
 
 module.exports = router

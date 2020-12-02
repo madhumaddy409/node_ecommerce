@@ -195,7 +195,16 @@
     // $('#myModal').modal('show');
     
    }
-      
+   const fetchProduct = (prodId) => {
+    let selectedProduct = []
+    console.log(prodId)
+    const products = JSON.parse(localStorage.getItem('products'))
+    selectedProduct = products.find((product) => prodId === product._id)
+    return selectedProduct
+    
+   }
+   
+ 
   
         const token = localStorage.getItem('token')
 
@@ -248,12 +257,12 @@
     
     
     
-        document.addEventListener("DOMContentLoaded", async function() {
+        document.addEventListener("DOMContentLoaded", function() {
   
-            const savedToken = await localStorage.getItem('token')
+            const savedToken = localStorage.getItem('token')
             console.log(savedToken)
-            // await fetch('http://localhost:3000/api/me/', {
-            await fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            // fetch('http://localhost:3000/api/me/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -276,14 +285,16 @@
 
 
 
-
+            
+            //orderdetails
             let user =JSON.parse(localStorage.getItem('user'))
             let userId = user._id
 
             let data2 = { user_id : userId}
 
-            // await fetch('http://localhost:3000/api/cartProducts', {
-            await fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
+            // fetch('http://localhost:3000/api/orderDetailes/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/orderDetailes/', {
+            
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -294,11 +305,12 @@
             .then(response => response.json())
             .then(data => {
             console.log('Success:', data);
+
+
             products = JSON.parse(localStorage.getItem('products'))
             console.log(products)
+         
             
-           
-
             const selectedProduct = []
             for (var key in data) {
             if (data.hasOwnProperty(key)) {
@@ -309,83 +321,53 @@
                 selectedProduct.push(prod);
                 }
             }
-  
-            console.log(selectedProduct);
-
-            selectedProduct.forEach(cartProduct => {
-            var div = document.querySelector('#cartProduct')
-            
-            
-            div.innerHTML = div.innerHTML + `
-                <div class="row gutters-sm ">
-                    <div class="col-sm-12 mb-4">
-                    <div class="card h-100">
-
-                        <div class="col-md-4 text-center col-sm-6 col-xs-6" id="cartProduct">
-                <div class="thumbnail product-box">
-                   <div style="height: 200px; width: auto"> <img style="height: inherit" class="img-fluid" src=${cartProduct.productImage} alt="" /> </div>
-                    <div class="caption">
-                        
-                        <h3><a href="#">${cartProduct.name} </a></h3>
-                        <p>Price : <strong>${cartProduct.price}</strong>  </p>
-                        <p>${cartProduct.description}</p>
-                       
-                        
-                        
-                        <button type="button" onclick="fetchProductToModal('${cartProduct._id}')" class="btn btn-info btn-lg">Place Order</button>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Modal -->
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                            
-                                <!-- Modal content-->
-                                <div class="modal-content text-center">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
-                                </div>
-        
-                                <div class="modal-body">
-        
-                                <div style="height: 100px; width: auto"> <img id="modalImage" style="height: inherit" class="img-fluid" src=${cartProduct.productImage} alt="" /> </div>
-                                    <div class="caption">
-                                        
-                                        <h3 id="modalTitle"></h3>
-                                        <p>Price : <strong id="modalPrice"></strong>  </p>
-                                        <p id="modalDesc"></p>
-                                        <p><button class="btn btn-success" onclick="addToCart('${cartProduct._id}')" role="button">Add To Cart</button> 
-                                        
-                                        </p>
-                                    </div>
-                                    </div>
-                                
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                                </div>
-                                
-                            </div>
-                            </div>
-                            
-                        </div>
 
  
+  
+            console.log(selectedProduct);
+                    productss = JSON.parse(localStorage.getItem('products'))
+                    data.forEach(cartProduct => {
                     
-                    </div>
-                    </div>
-                </div>
-                
+                    const prod = productss.find((product) => cartProduct.product_id === product._id);
+                 
+                    var div = document.querySelector('#cartProduct')
+                    
+                    
+                    div.innerHTML = div.innerHTML + `
+                        <div class="row gutters-sm ">
+                            <div class="col-sm-12 mb-4">
+                            <div class="card h-100">
+                    
+                                <div class="col-md-4 text-center col-sm-6 col-xs-4">
+                                    <div class="thumbnail product-box">
+                                   
+                                    <div style="height: 200px; width: auto"> <img style="height: inherit" class="img-fluid" src=${prod.productImage} alt="" /> </div>
+                                    <div class="caption">
+                                
+                                        <h3><a href="#">${prod.name} </a></h3>
+                                        <p>Price : <strong>${prod.price}</strong>  </p>
+                                        <p>${prod.description}</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                <div class="col-md-4 text-center col-sm-6 col-xs-4">
+                                    <div class="thumbnail product-box">
+                                        <p>Name : ${cartProduct.userName}</p>
+                                        <p>Phone Number : ${cartProduct.PhoneNumber}</p>
+                                        <p>City : ${cartProduct.city}</p>
+                                        <p>State : ${cartProduct.State}</p>
+                                        <p>Address : ${cartProduct.Address}</p>                    
+                                    </div>
+                                 </div>
+                             </div>
+
 
                 
                 
-        
-            `
-            });
+                    `
+                    });
+
+           
 
             
            

@@ -75,7 +75,11 @@ router.get("/placeOrder", function(req, res) {
 });
 
 
+router.get("/trackOrder", function(req, res) {
 
+  res.sendFile(__dirname + "/templates/trackOrder.html");
+
+});
 
 
 

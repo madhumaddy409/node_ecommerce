@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //products
     fetch('https://nodetestcommerce.herokuapp.com/api/categoryProd',{
     // fetch('http://localhost:3000/api/categoryProd', {
-    method: 'POST', // or 'PUT'
+    // method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
     },

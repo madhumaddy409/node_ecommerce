@@ -27,22 +27,14 @@ exports.postOrder = async (req, res) => {
 
 
 
-exports.getOrder = (req, res) => {
-    // res.send("Hello")
-    var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
-// var url = "mongodb://localhost:27017/";
+exports.getOrder = async (req, res) => {
+const { user_id} = req.body;
+ 
+    let order = await Order.find({
+        user_id
+      });
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  var dbo = db.db("ecommerce");
-//   var query = {name:"samsung" }
-  dbo.collection("products").find({}).toArray(function(err, result) {
-    if (err) throw err;
-    console.log(result);
-    res.send(result)
-    
-  });
-});
+     console.log(order)
+     res.send(order)
     
 }
