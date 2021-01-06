@@ -96,10 +96,10 @@ exports.postLogin =async (req, res) => {
     //   });
     // }
 
-    const { email, password } = req.body;
+    const { username, password } = req.body;
     try {
       let user = await User.findOne({
-        email
+        username
       });
       if (!user)
         return res.status(400).json({
@@ -114,7 +114,8 @@ exports.postLogin =async (req, res) => {
 
       const payload = {
         user: {
-          id: user.id
+          id: user.id,
+          name: user.username
         }
       };
 

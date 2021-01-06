@@ -16,6 +16,10 @@ const cartRoutes = require("./routes/cart")
 const categoryRoutes = require("./routes/category")
 const subCategoryRoutes = require("./routes/subCategory")
 const orderRoutes = require("./routes/order")
+const chatRoutes = require("./routes/chat")
+const commentRoutes = require("./routes/comment")
+
+
 
 const uploadRoutes = require("./routes/fileupload")
 
@@ -49,6 +53,8 @@ app.use(express.static('public'));
 app.use("/api",categoryRoutes)
 app.use("/api",subCategoryRoutes)
 app.use("/api",orderRoutes)
+app.use("/api",chatRoutes)
+app.use("/api",commentRoutes)
 
 
 const port=Number(process.env.PORT || 3000);
@@ -83,3 +89,9 @@ app.get("/login", function(req, res) {
 
 });
 
+app.get("/api/chat", function(req, res) {
+
+    // res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/public/chat.html");
+
+});

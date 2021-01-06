@@ -166,6 +166,13 @@
                         Bay Area, San Francisco, CA
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3 ">
+                        <h5 class="mb-0"> Ordered Products</h5>
+                        </div>
+                        
+                    </div>
                     </div>
                 </div>
 
@@ -261,8 +268,8 @@
   
             const savedToken = localStorage.getItem('token')
             console.log(savedToken)
-            // fetch('http://localhost:3000/api/me/', {
-            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            fetch('http://localhost:3000/api/me/', {
+            // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -292,8 +299,8 @@
 
             let data2 = { user_id : userId}
 
-            // fetch('http://localhost:3000/api/orderDetailes/', {
-            fetch('https://nodetestcommerce.herokuapp.com/api/orderDetailes/', {
+            fetch('http://localhost:3000/api/orderDetailes/', {
+            // fetch('https://nodetestcommerce.herokuapp.com/api/orderDetailes/', {
             
             method: 'POST', // or 'PUT'
             headers: {

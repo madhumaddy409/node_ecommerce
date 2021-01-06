@@ -165,10 +165,21 @@
                         <div class="col-sm-9 text-secondary">
                         Bay Area, San Francisco, CA
                         </div>
+                        
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3 ">
+                        <h4 class="mb-0"> Cart Products</h4>
+                        </div>
+                        
+                    </div>
+
+    
+
                     </div>
                 </div>
-
+                
                 <div id="cartProduct"></div>
                 </div>
             </div>
@@ -252,8 +263,8 @@
   
             const savedToken = await localStorage.getItem('token')
             console.log(savedToken)
-            // await fetch('http://localhost:3000/api/me/', {
-            await fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            await fetch('http://localhost:3000/api/me/', {
+            // await fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -282,8 +293,8 @@
 
             let data2 = { user_id : userId}
 
-            // await fetch('http://localhost:3000/api/cartProducts', {
-            await fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
+            await fetch('http://localhost:3000/api/cartProducts', {
+            // await fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

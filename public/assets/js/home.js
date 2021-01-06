@@ -33,8 +33,8 @@ const fetchProductToModal = (prodId) => {
     
     
 
-    fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
-    // fetch('http://localhost:3000/api/cart', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
+    fetch('http://localhost:3000/api/cart', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if(token)
     {
         
-        // fetch('http://localhost:3000/api/me/', {
-            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+        fetch('http://localhost:3000/api/me/', {
+            // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
               method: 'GET', // or 'PUT'
               headers: {
                   'Content-Type': 'application/json',
@@ -104,26 +104,17 @@ document.addEventListener("DOMContentLoaded", function() {
                         div.innerHTML = div.innerHTML + `
                                 <ul class="nav navbar-nav navbar-right">
                                 <li><a href="./api/trackOrder">Track Order</a></li>
+                                <li><a href="./api/profile">Cart</a></li>
+                                
+
                                 <li><a href="./api/profile">${user}</a></li>
                                 <li style="margin-top: 1rem">
                                         <button  type="submit" class="btn btn-primary" onclick="logout()">logout</button>
                                     
                                 </li>
                                 
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#"><strong>Call: </strong>+09-456-567-890</a></li>
-                                        <li><a href="#"><strong>Mail: </strong>info@yourdomain.com</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#"><strong>Address: </strong>
-                                            <div>
-                                                234, New york Street,<br />
-                                                Just Location, USA
-                                            </div>
-                                        </a></li>
-                                    </ul>
-                            
+                                
+                                
                             
                         `
                     }
@@ -188,8 +179,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     //products
-    fetch('https://nodetestcommerce.herokuapp.com/api/product',{
-    // fetch('http://localhost:3000/api/product', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/product',{
+    fetch('http://localhost:3000/api/product', {
     method: 'GET', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -305,8 +296,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
 
         
-        // fetch('http://localhost:3000/api/category', {
-        fetch('https://nodetestcommerce.herokuapp.com/api/category/',{
+        fetch('http://localhost:3000/api/category', {
+        // fetch('https://nodetestcommerce.herokuapp.com/api/category/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -340,8 +331,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //subcategory
         
-        // fetch('http://localhost:3000/api/subcategory', {
-        fetch('https://nodetestcommerce.herokuapp.com/api/subcategory/',{
+        fetch('http://localhost:3000/api/subcategory', {
+        // fetch('https://nodetestcommerce.herokuapp.com/api/subcategory/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',

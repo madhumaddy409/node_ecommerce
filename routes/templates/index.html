@@ -121,7 +121,7 @@ body {
         <div class="form">
        
           <!-- <form class="loginForm" > -->
-            <input type="text" id="login_email" placeholder="username"/>
+            <input type="text" id="login_username" placeholder="username"/>
             <input type="password" id="login_password" placeholder="password"/>
             <button type="submit" id="login_btn" onclick="login()">login</button>
             <p class="message">Not registered? <a href="javascript:void(0)" id="showSignUp">Create an account</a></p>
@@ -135,16 +135,16 @@ body {
 <script type="text/javascript">
 //login
 function login() {
-    username = document.querySelector('#login_email').value;
+    username = document.querySelector('#login_username').value;
     password = document.querySelector('#login_password').value;
     console.log(username,password)
-    const data = { email: username,
+    const data = { username : username,
                     password: password
 
     };
 
-    // fetch('http://localhost:3000/api/login/', {
-    fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    fetch('http://localhost:3000/api/login/', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -182,8 +182,8 @@ function header(){
 
   const savedToken = localStorage.getItem('token')
   console.log(savedToken)
-  // fetch('http://localhost:3000/api/me/', {
-  fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+  fetch('http://localhost:3000/api/me/', {
+  // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -213,8 +213,8 @@ function register() {
     };
     console.log(data)
 
-    // fetch('http://localhost:3000/api/signup/', {
-    fetch('https://nodetestcommerce.herokuapp.com/api/signup/',{
+    fetch('http://localhost:3000/api/signup/', {
+    // fetch('https://nodetestcommerce.herokuapp.com/api/signup/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
