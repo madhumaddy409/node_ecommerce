@@ -66,8 +66,8 @@
   
             const savedToken = localStorage.getItem('token')
             console.log(savedToken)
-            fetch('http://localhost:3000/api/me/', {
-            // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            // fetch('http://localhost:3000/api/me/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -93,8 +93,10 @@
 
             //
 
-            fetch('http://localhost:3000/api/cart/', {
+            // fetch('http://localhost:3000/api/cart/', {
             // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+            fetch('https://nodetestcommerce.herokuapp.com/api/cart/',{
+            
             method: 'GET', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

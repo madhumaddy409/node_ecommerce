@@ -143,8 +143,8 @@ function login() {
 
     };
 
-    fetch('http://localhost:3000/api/login/', {
-    // fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
+    // fetch('http://localhost:3000/api/login/', {
+    fetch('https://nodetestcommerce.herokuapp.com/api/login/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -182,8 +182,8 @@ function header(){
 
   const savedToken = localStorage.getItem('token')
   console.log(savedToken)
-  fetch('http://localhost:3000/api/me/', {
-  // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+  // fetch('http://localhost:3000/api/me/', {
+  fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -213,8 +213,8 @@ function register() {
     };
     console.log(data)
 
-    fetch('http://localhost:3000/api/signup/', {
-    // fetch('https://nodetestcommerce.herokuapp.com/api/signup/',{
+    // fetch('http://localhost:3000/api/signup/', {
+    fetch('https://nodetestcommerce.herokuapp.com/api/signup/',{
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',

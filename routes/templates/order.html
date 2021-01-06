@@ -230,8 +230,8 @@
                 };
 
                 console.log(data)
-                // fetch('https://nodetestcommerce.herokuapp.com/api/order',{
-                fetch('http://localhost:3000/api/order', {
+                fetch('https://nodetestcommerce.herokuapp.com/api/order',{
+                // fetch('http://localhost:3000/api/order', {
                 method: 'POST', // or 'PUT'
                 headers: {
                     'Content-Type': 'application/json',
@@ -270,8 +270,8 @@
             const savedToken = localStorage.getItem('token')
             console.log(savedToken)
            
-            fetch('http://localhost:3000/api/cartProducts/', {
-            // fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
+            // fetch('http://localhost:3000/api/cartProducts/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/cartProducts/',{
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

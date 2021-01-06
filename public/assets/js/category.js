@@ -30,8 +30,8 @@ const fetchProductToModal = (prodId) => {
     
                 };
 
-    // fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
-    fetch('http://localhost:3000/api/cart', {
+    fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
+    // fetch('http://localhost:3000/api/cart', {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -82,8 +82,8 @@ document.addEventListener("DOMContentLoaded", function() {
     if(token)
     {
         
-        fetch('http://localhost:3000/api/me/', {
-            // fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
+        // fetch('http://localhost:3000/api/me/', {
+            fetch('https://nodetestcommerce.herokuapp.com/api/me/',{
               method: 'GET', // or 'PUT'
               headers: {
                   'Content-Type': 'application/json',
@@ -189,8 +189,8 @@ document.addEventListener("DOMContentLoaded", function() {
     const data1 = { category: cat };
 
     //products
-    // fetch('https://nodetestcommerce.herokuapp.com/api/categoryProd',{
-    fetch('http://localhost:3000/api/categoryProd', {
+    fetch('https://nodetestcommerce.herokuapp.com/api/categoryProd',{
+    // fetch('http://localhost:3000/api/categoryProd', {
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -306,8 +306,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
 
         
-        fetch('http://localhost:3000/api/category', {
-        // fetch('https://nodetestcommerce.herokuapp.com/api/category/',{
+        // fetch('http://localhost:3000/api/category', {
+        fetch('https://nodetestcommerce.herokuapp.com/api/category/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
@@ -341,8 +341,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         //subcategory
         
-        fetch('http://localhost:3000/api/subcategory', {
-        // fetch('https://nodetestcommerce.herokuapp.com/api/subcategory/',{
+        // fetch('http://localhost:3000/api/subcategory', {
+        fetch('https://nodetestcommerce.herokuapp.com/api/subcategory/',{
         method: 'GET', // or 'PUT'
         headers: {
             'Content-Type': 'application/json',
