@@ -50,7 +50,7 @@ exports.getCategoryProd = async (req, res) => {
     const {category} =req.body
     console.log(category)
     const query = {category:category }
-    const catProducts = await Products.find({query})
+    const catProducts = await Products.find({query}).toArray()
     if(catProducts)
     {
       res.send(catProducts)
