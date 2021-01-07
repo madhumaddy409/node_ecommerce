@@ -8,7 +8,7 @@ const { postSubCategory ,getSubCategory ,getAllSubCategories } = require("../con
 
 router.post("/subCategory", postSubCategory)
 
-// router.get("/subCategory", getSubCategory)
+router.get("/subCategory", getSubCategory)
 
 
 
