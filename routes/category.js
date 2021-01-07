@@ -12,6 +12,10 @@ router.get("/category", getCategory)
 
 router.post('/categoryProd', getCategoryProd)
 
+// router.get("/category", getAllCategory)
+
+
+
 
 
 

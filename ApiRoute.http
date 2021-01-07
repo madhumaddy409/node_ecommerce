@@ -1,0 +1,16 @@
+
+
+##register
+POST http://localhost:3000/api/signup/
+# POST https://nodetestcommerce.herokuapp.com/api/signup/
+Content-Type: application/json
+
+{
+    "email": "itech.maddy.tm@gmail.com",
+    "username": "maddy",
+    "password": "123456"
+}
+
+
+
+

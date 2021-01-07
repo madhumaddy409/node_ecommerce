@@ -1,5 +1,9 @@
-const e = require("cors");
+// const e = require("cors");
 const { query } = require("express");
+
+const redis = require('redis')
+const {promisify} = require('util')
+
 const category = require("../models/category");
 const SubCategory = require("../models/subCategory")
 
@@ -66,3 +70,9 @@ exports.getSubCategory = async (req, res) => {
       });
     });
 };
+
+
+
+
+
+

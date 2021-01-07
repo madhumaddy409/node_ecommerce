@@ -1,3 +1,6 @@
+const redis = require('redis')
+const {promisify} = require('util')
+
 const { query } = require("express");
 const Product = require("../models/products")
 
@@ -36,3 +39,48 @@ MongoClient.connect(url, function(err, db) {
 });
     
 }
+
+
+//redis
+
+// const Redis_port = Number(process.env.PORT || 6379);
+// const Redis_port = "redis-13376.c80.us-east-1-2.ec2.cloud.redislabs.com:13376"
+
+client    = redis.createClient({
+  port      : 13376,               // replace with your port
+  host      : 'redis-13376.c80.us-east-1-2.ec2.cloud.redislabs.com',        // replace with your hostanme or IP address
+  password  : 'tHEWjYHhQhF6vFmVMJO1cnFxYDpxhA4n',    // replace with your password
+});
+
+const GET_ASYNC = promisify(client.get).bind(client)
+const SET_ASYNC = promisify(client.set).bind(client)
+
+
+
+exports.getAllProduct = async (req, res) =>  {
+  try{
+       const reply = await GET_ASYNC('products')
+ 
+       if(reply){
+         console.log('using cached data')
+         res.send(JSON.parse(reply))
+         return
+       }
+ 
+       const respone =  await Product.find({});
+       const saveResult = await SET_ASYNC('products', JSON.stringify(respone),'EX', 35)
+       
+       console.log('new data cached',saveResult)
+       // console.log(respone)
+       res.send(respone)
+  
+ 
+  } catch(err){
+    console.log(err);
+    res.status(500)
+  }
+  
+   
+ 
+ 
+ }

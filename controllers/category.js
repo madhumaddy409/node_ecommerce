@@ -1,4 +1,9 @@
 const { query } = require("express");
+const redis = require('redis')
+const {promisify} = require('util')
+
+
+
 const Category = require("../models/category")
 const Products = require("../models/products")
 
@@ -30,39 +35,53 @@ exports.postCategory = async (req, res) => {
 };
 
 
-exports.getCategory = async (req, res) => {
-    var MongoClient = require('mongodb').MongoClient;
-    var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
- 
-    MongoClient.connect(url, function(err, db) {
-      if (err) throw err;
-      var dbo = db.db("ecommerce");
-      dbo.collection("categories").find({}).toArray(function(err, result) {
-        if (err) throw err;
-        console.log(query);
-        res.send(result)
-        
-      });
-    });
-};
-
- 
+exports.getCategory = async(req, res) => {
+  const category =  await Category.find({});
+  if(category)
+  {
+    res.send(category)
+  }
+  else{
+    res.status(404)
+  }
+}
 
 exports.getCategoryProd = async (req, res) => {
-  var MongoClient = require('mongodb').MongoClient;
-  var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    var dbo = db.db("ecommerce");
     const {category} =req.body
     console.log(category)
     const query = {category:category }
-    dbo.collection("products").find(query).toArray(function(err, result) {
-      if (err) throw err;
-      console.log(query);
-      res.send(result)
+    const catProducts = await Products.find({query})
+    if(catProducts)
+    {
+      res.send(catProducts)
+    }
+    else{
+      res.status(404)
+    }
+
+}
+ 
+
+// exports.getCategoryProd = async (req, res) => {
+//   var MongoClient = require('mongodb').MongoClient;
+//   var url = "mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?retryWrites=true&w=majority";
+
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     var dbo = db.db("ecommerce");
+//     const {category} =req.body
+//     console.log(category)
+//     const query = {category:category }
+//     dbo.collection("products").find(query).toArray(function(err, result) {
+//       if (err) throw err;
+//       console.log(query);
+//       res.send(result)
       
-    });
-  });
-};
+//     });
+//   });
+// };
+
+
+
+
+

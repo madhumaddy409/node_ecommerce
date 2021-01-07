@@ -1,4 +1,5 @@
 var express = require("express")
+const limitter = require('express-rate-limit')
 var router = express.Router()
 
 
@@ -11,11 +12,22 @@ const {auth} = require("../middleware/auth")
 const User = require("../models/user");
 
 
+const registerLimitter = limitter({
+  windowMs: 5000,
+  max: 2,
+  message: {
+    code:429,
+    msg:'To ManY Request'
+  }
+
+})
+
 
 //signup
 
 router.post(
     "/signup",
+    registerLimitter,
     [
         check("username", "Please Enter a Valid Username")
         .not()
