@@ -1,6 +1,6 @@
 
 
-##register
+#register
 POST http://localhost:3000/api/signup/
 # POST https://nodetestcommerce.herokuapp.com/api/signup/
 Content-Type: application/json
@@ -10,6 +10,10 @@ Content-Type: application/json
     "username": "maddy",
     "password": "123456"
 }
+
+
+# ##product
+# GET http://localhost:3000/api/product
 
 
 

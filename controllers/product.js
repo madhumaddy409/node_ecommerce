@@ -1,5 +1,5 @@
 const redis = require('redis')
-const {promisify} = require('util')
+const {promisify, isRegExp} = require('util')
 
 const { query } = require("express");
 const Product = require("../models/products")
@@ -83,4 +83,17 @@ exports.getAllProduct = async (req, res) =>  {
    
  
  
+ }
+
+ exports.getByIdProduct = function (req, res,next) {
+  const {productId} = req.params
+  const _id = productId
+
+Product.findById(_id, function (err, product) { 
+  if (err) {
+    res.status(500).json({ error: { message: 'incorrect productid' } })
+  } else {
+    res.json(product);
+  }
+});
  }

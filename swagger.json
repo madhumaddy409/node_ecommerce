@@ -1,0 +1,497 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Yet Another Node.js Blogg Application API",
+      "description": "Yet Another Node.js Blogg Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "Ecommerce",
+        "description": "API for users in the system"
+      }
+    ],
+    "schemes": [
+      "http",
+      "https"
+    ],
+
+
+"securityDefinitions":{
+  "appKey":{
+    "type": "apiKey",
+    "name": "token",
+    "in": "header"
+  
+  }
+}
+  ,
+   
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    
+   
+    "paths": {
+      "/product": {
+        "post": {
+          "tags": [
+            "Products"
+          ],
+          "description": "Create new product in system",
+          "parameters": [
+            {
+              "name": "Products",
+              "in": "body",
+              "description": "Product that we want to create",
+              "schema": {
+                "$ref": "#/definitions/Products"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "New product is created",
+              "schema": {
+                "$ref": "#/definitions/Products"
+              }
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Get all products in system",
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Products"
+              }
+            }
+          }
+        }
+      },
+      
+      "/product/{productId}": {
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "required": true,
+            "description": "ID of product that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "Products"
+          ],
+          "summary": "Get user with given ID",
+          "responses": {
+            "200": {
+              "description": "Product is found",
+              "schema": {
+                "$ref": "#/definitions/Proudcts"
+              }
+            }
+          }
+        }
+    },
+
+    "/category": {
+      "post": {
+        "tags": [
+          "category"
+        ],
+        "description": "Create new category in system",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "body",
+            "description": "category that we want to create",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New category is created",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "category"
+        ],
+        "summary": "Get all categories in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          }
+        }
+      }
+    },
+
+    "/subCategory": {
+      "post": {
+        "tags": [
+          "subcategory"
+        ],
+        "description": "Create new subCategory in system",
+        "parameters": [
+          {
+            "name": "subcategory",
+            "in": "body",
+            "description": "subCategory that we want to create",
+            "schema": {
+              "$ref": "#/definitions/subcategory"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New subCategory is created",
+            "schema": {
+              "$ref": "#/definitions/subcategory"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "subcategory"
+        ],
+        "summary": "Get all subCategory in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/subcategory"
+            }
+          }
+        }
+      }
+    },
+
+    "/cart": {
+      "post": {
+        "security":[{
+          "appKey": [] 
+        }],
+        "tags": [
+          "cart"
+        ],
+        "description": "Create new cartItem in system",
+        "parameters": [
+          {
+            "name": "cart",
+            "in": "body",
+            "description": "cartItem that we want to create",
+            "schema": {
+              "$ref": "#/definitions/cart"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "New CartItem is created",
+            "schema": {
+              "$ref": "#/definitions/cart"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/cartProducts": {
+      "post": {
+        "security":[{
+          "appKey": [] 
+        }],
+        "tags": [
+          "cart"
+        ],
+        "description": "getting the cartItem from system",
+        "parameters": [
+          {
+            "name": "cart",
+            "in": "body",
+            "description": "fetching cart cartitem",
+            "schema": {
+              "$ref": "#/definitions/cartProducts"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "fetching CartItems",
+            "schema": {
+              "$ref": "#/definitions/cartProducts"
+            }
+          }
+        }
+      }
+    },
+    
+  
+
+
+
+      "/users/{userId}": {
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "ID of user that we want to find",
+            "type": "string"
+          }
+        ],
+        "get": {
+          "tags": [
+            "User"
+          ],
+          "summary": "Get user with given ID",
+          "responses": {
+            "200": {
+              "description": "User is found",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        }
+      },
+       
+
+      "/login": {
+        "post": {
+          "tags": [
+            "User"
+          ],
+          "description": "User Login",
+          "parameters": [
+            {
+              "name": "User",
+              "in": "body",
+              "description": "User Login",
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "login successfully",
+              "schema": {
+                "$ref": "#/definitions/login"
+              }
+            }
+          }
+        }
+      },
+
+      
+      "/me": {
+        "get": {
+          "security":[{
+            "appKey": [] 
+          }],
+          "tags": [
+            "User"
+          ],
+          "description": "User Login",
+          "produces": [
+            "application/json"
+          ],
+          "responses": {
+            "200": {
+              "description": "User Details",
+              "schema": {
+                "$ref": "#/definitions/me"
+              }
+            }
+          }
+        }
+      }
+ 
+
+
+    },
+
+    "definitions": {
+      "Products": {
+        "required": [
+          "name",
+          "productImage",
+          "category",
+          "subCategory",
+          "description",
+          "brand",
+          "status",
+          "price"
+
+
+        ],
+        "properties": {
+
+            "name": {
+                "type": "string"
+                
+            },
+            "productImage":{
+                "type": "string"
+        
+            },
+            "category": {
+                "type": "string"    
+            },
+            "subCategory": {
+                "type": "string"
+            },
+            "description": {
+                "type": "string"
+
+            },
+            "brand": {
+                "type": "string"
+            },
+            "status": {
+                "type": "string"
+            },
+            "price":{
+                "type": "number"
+
+            }        
+
+          
+        }
+      },
+      "User": {
+        "required": [
+          "username",
+          "password"
+        ],
+        "properties": {
+
+          "username": {
+              "type": "string"
+              
+          },
+          "password": {
+            "type": "string"
+            
+          }
+        }
+        
+      },
+
+      "category": {
+        "required": [
+          "categoryName",
+          "status"
+        ],
+        "properties": {
+
+            "categoryName": {
+                "type": "string"
+                
+            },
+            "status": {
+              "type": "string"
+              
+            }
+          }
+        },
+
+        "subcategory": {
+          "required": [
+            "categoryName",
+            "subCategoryName",
+            "status"
+          ],
+          "properties": {
+  
+              "categoryName": {
+                  "type": "string"
+                  
+              },
+              "subCategoryName" :{
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+                
+              }
+            }
+          },
+
+          "cart": {
+            "required": [
+              "product_id",
+              "user_id",
+              "quantity"
+            ],
+            "properties": {
+    
+                "product_id": {
+                    "type": "string"
+                    
+                },
+                "user_id" :{
+                  "type": "string"
+                },
+                "quantity": {
+                  "type": "string"
+                  
+                }
+              }
+            }
+
+
+
+
+    }
+
+   
+
+    
+  }
+  

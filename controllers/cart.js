@@ -9,8 +9,8 @@ const products = require("../models/products");
 
 exports.postCart = async(req, res) => {
     const { product_id ,user_id ,quantity} = req.body;
-    
-
+    const token = req.header;
+  
     let cart = await Cart.findOne({
         product_id,user_id
       });

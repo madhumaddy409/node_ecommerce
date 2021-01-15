@@ -37,6 +37,12 @@ mongoose.connect('mongodb+srv://root:root@cluster0.ue8qu.mongodb.net/ecommerce?r
     console.log("DB not connected")
 });
 
+const swaggerUi = require('swagger-ui-express'),
+    swaggerDocument = require('./swagger.json');
+
+
+      
+
 
 
 //MiddleWares
@@ -55,6 +61,15 @@ app.use("/api",subCategoryRoutes)
 app.use("/api",orderRoutes)
 app.use("/api",chatRoutes)
 app.use("/api",commentRoutes)
+
+//swagger API
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', prodRoutes);
+app.use('/api/v1', categoryRoutes);
+app.use('/api/v1', subCategoryRoutes);
+app.use('/api/v1', cartRoutes);
+app.use('/api/v1', userRoutes);
+
 
 
 const port=Number(process.env.PORT || 3000);
