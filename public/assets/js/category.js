@@ -356,9 +356,10 @@ document.addEventListener("DOMContentLoaded", function() {
         var div = document.querySelector('#subcategory')
 
         div.innerHTML = div.innerHTML + `
-                <li class="list-group-item">${subcategory.subCategoryName}
-                     <span class="label label-danger pull-right">300</span>
-                </li>
+        <li class="list-group-item">
+        <span class="label label-danger pull-right">300</span>
+        <a href="https://nodetestcommerce.herokuapp.com/subcategory${'?subcat='+subcategory.subCategoryName}">${subcategory.subCategoryName}</a>
+   </li>
 
         `
         });

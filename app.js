@@ -98,6 +98,13 @@ app.get("/category", function(req, res) {
 
 });
 
+app.get("/subcategory", function(req, res) {
+
+    res.sendFile(__dirname + "/public/subcategory.html");
+
+});
+
+
 
 app.get("/login", function(req, res) {
 

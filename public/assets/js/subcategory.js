@@ -64,13 +64,11 @@ const fetchProductToModal = (prodId) => {
 document.addEventListener("DOMContentLoaded", function() {
 
     let params = new URLSearchParams(document.location.search.substring(1));
-    let cat = params.get("subcat");
-    console.log(cat)
+    let subcat= params.get("subcat");
+    console.log(subcat)
+  
 
-    // var id = "10";
-    // $('#a_tag_id').attr('href','http://localhost:3000/category'+id);
 
-//    fetchProductToModal("5fbd2ae32ca6a1057c9dd1c8");
 
 
 
@@ -186,11 +184,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-    const data1 = { subCategory: subcat };
+    const data1 = { subcategory : subcat};
 
     //products
     fetch('https://nodetestcommerce.herokuapp.com/api/subcategoryProd',{
-    // fetch('http://localhost:3000/api/subcategoryProd', {
+    // fetch('http://localhost:3000/api/subcategoryprod', {
     method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
@@ -356,8 +354,9 @@ document.addEventListener("DOMContentLoaded", function() {
         var div = document.querySelector('#subcategory')
 
         div.innerHTML = div.innerHTML + `
-                <li class="list-group-item">${subcategory.subCategoryName}
+                <li class="list-group-item">
                      <span class="label label-danger pull-right">300</span>
+                     <a href="https://nodetestcommerce.herokuapp.com/subcategory${'?subcat='+subcategory.subCategoryName}">${subcategory.subCategoryName}</a>
                 </li>
 
         `

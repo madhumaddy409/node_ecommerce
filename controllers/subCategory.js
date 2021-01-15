@@ -78,7 +78,7 @@ exports.getsubCategoryProd = async (req, res) => {
   const {subcategory} =req.body
   console.log(subcategory)
  
-  const subcatProducts = await Products.find({subCategory : "Smart phone"})
+  const subcatProducts = await Products.find({subCategory : subcategory})
   console.log(subcatProducts)
   if(subcatProducts)
   {
