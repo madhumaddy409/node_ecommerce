@@ -69,6 +69,8 @@ app.use('/api/v1', categoryRoutes);
 app.use('/api/v1', subCategoryRoutes);
 app.use('/api/v1', cartRoutes);
 app.use('/api/v1', userRoutes);
+app.use('/api/v1',orderRoutes)
+
 
 
 

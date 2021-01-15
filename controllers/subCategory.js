@@ -6,6 +6,7 @@ const {promisify} = require('util')
 
 const category = require("../models/category");
 const SubCategory = require("../models/subCategory")
+const Products = require("../models/products")
 
 
 
@@ -73,6 +74,21 @@ exports.getSubCategory = async (req, res) => {
 
 
 
+exports.getsubCategoryProd = async (req, res) => {
+  const {subcategory} =req.body
+  console.log(subcategory)
+ 
+  const subcatProducts = await Products.find({subCategory : "Smart phone"})
+  console.log(subcatProducts)
+  if(subcatProducts)
+  {
+    res.send(subcatProducts)
+  }
+  else{
+    res.status(404)
+  }
+
+}
 
 
 

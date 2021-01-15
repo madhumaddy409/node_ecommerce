@@ -30,9 +30,6 @@ const fetchProductToModal = (prodId) => {
     
                 };
 
-    
-    
-
     fetch('https://nodetestcommerce.herokuapp.com/api/cart',{
     // fetch('http://localhost:3000/api/cart', {
         method: 'POST', // or 'PUT'
@@ -65,6 +62,10 @@ const fetchProductToModal = (prodId) => {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+
+    let params = new URLSearchParams(document.location.search.substring(1));
+    let cat = params.get("subcat");
+    console.log(cat)
 
     // var id = "10";
     // $('#a_tag_id').attr('href','http://localhost:3000/category'+id);
@@ -103,18 +104,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
                         div.innerHTML = div.innerHTML + `
                                 <ul class="nav navbar-nav navbar-right">
-                                <li><a href="./api/trackOrder">Track Order</a></li>
-                                <li><a href="./api/profile">Cart</a></li>
-                                
-
+                                <li><a href="#">Track Order</a></li>
                                 <li><a href="./api/profile">${user}</a></li>
                                 <li style="margin-top: 1rem">
                                         <button  type="submit" class="btn btn-primary" onclick="logout()">logout</button>
                                     
                                 </li>
                                 
-                                
-                                
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">24x7 Support <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><strong>Call: </strong>+09-456-567-890</a></li>
+                                        <li><a href="#"><strong>Mail: </strong>info@yourdomain.com</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><strong>Address: </strong>
+                                            <div>
+                                                234, New york Street,<br />
+                                                Just Location, USA
+                                            </div>
+                                        </a></li>
+                                    </ul>
+                            
                             
                         `
                     }
@@ -176,21 +186,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }
 
-
+    const data1 = { subCategory: subcat };
 
     //products
-    fetch('https://nodetestcommerce.herokuapp.com/api/product',{
-    // fetch('http://localhost:3000/api/product', {
-    method: 'GET', // or 'PUT'
+    fetch('https://nodetestcommerce.herokuapp.com/api/subcategoryProd',{
+    // fetch('http://localhost:3000/api/subcategoryProd', {
+    method: 'POST', // or 'PUT'
     headers: {
         'Content-Type': 'application/json',
     },
-    // body: JSON.stringify(data),
+    body: JSON.stringify(data1),
     })
     .then(response => response.json())
     .then(data => {
     console.log('Success:', data);
-
+    console.log(data)
     //product(local storage)
     localStorage.setItem('products',JSON.stringify(data))
     
@@ -349,10 +359,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 <li class="list-group-item">${subcategory.subCategoryName}
                      <span class="label label-danger pull-right">300</span>
                 </li>
-                <a href="https://nodetestcommerce.herokuapp.com/subcategory${'?subcat='+subcategory.subCategoryName}">${subcategory.subCategoryName}</a>
-                   
-                <span class="label label-primary pull-right">234</span>
-            </li>
 
         `
         });
@@ -378,13 +384,6 @@ document.addEventListener("DOMContentLoaded", function() {
 function logout(){
 
     localStorage.removeItem('token')
-    localStorage.removeItem('orderProdId')
-
-    localStorage.removeItem('user')
-    
-
-
-    
     msg = "logout succesfully"
     alert(msg) ? "" : location.reload();
     

@@ -9,7 +9,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "nodetestcommerce.herokuapp.com",
+    "host": "localhost:3000",
     "basePath": "/api/v1",
     "tags": [
       {
@@ -266,6 +266,40 @@
         }
       }
     },
+
+
+    "/order": {
+      "post": {
+        "security":[{
+          "appKey": [] 
+        }],
+        "tags": [
+          "order"
+        ],
+        "description": "add cart item to order",
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "adding order items",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Successfully",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        }
+      }
+    },
     
   
 
@@ -338,6 +372,7 @@
             "User"
           ],
           "description": "User Login",
+
           "produces": [
             "application/json"
           ],
@@ -483,7 +518,60 @@
                   
                 }
               }
-            }
+            },
+
+
+            "order": {
+              "required": [
+                "product_id",
+                "user_id",
+                "quantity",
+                "orderType",
+                "userName",
+                "phoneNumber",
+                "city",
+                "State",
+                "Address",
+                "Status"
+              
+              ],
+              "properties": {
+      
+                  "product_id": {
+                      "type": "string"
+                      
+                  },
+                  "user_id" :{
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "string"
+                    
+                  },
+                  "orderType":{
+                    "type": "string"
+                  },
+                  "userName":{
+                      "type": "string"
+                  },
+                  "PhoneNumber":{
+                      "type": "number"
+                  },
+                  "city":{
+                      "type": "string"
+                  },
+                  "State":{
+                      "type": "String"
+                  },
+                  "Address":{
+                      "type":"string"
+                  },
+                  "Status":{
+                      "type": "string"
+
+                  }
+                }
+              }
 
 
 

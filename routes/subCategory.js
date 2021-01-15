@@ -3,13 +3,14 @@ var router = express.Router()
 
 
 
-const { postSubCategory ,getSubCategory ,getAllSubCategories } = require("../controllers/subCategory")
+const { postSubCategory ,getSubCategory ,getAllSubCategories ,getsubCategoryProd } = require("../controllers/subCategory")
 
 
 router.post("/subCategory", postSubCategory)
 
 router.get("/subCategory", getSubCategory)
 
+router.post('/subcategoryProd', getsubCategoryProd)
 
 
 
