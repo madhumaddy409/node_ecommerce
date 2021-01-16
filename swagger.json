@@ -9,7 +9,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "localhost:3000",
+    "host": "nodetestcommerce.herokuapp.com",
     "basePath": "/api/v1",
     "tags": [
       {
@@ -300,6 +300,40 @@
         }
       }
     },
+
+
+    "/orderDetailes": {
+      "post": {
+        "security":[{
+          "appKey": [] 
+        }],
+        "tags": [
+          "order"
+        ],
+        "description": "Order Details",
+        "parameters": [
+          {
+            "name": "order",
+            "in": "body",
+            "description": "Order Details",
+            "schema": {
+              "$ref": "#/definitions/orderDetails"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Details",
+            "schema": {
+              "$ref": "#/definitions/order"
+            }
+          }
+        }
+      }
+    },
     
   
 
@@ -571,7 +605,20 @@
 
                   }
                 }
-              }
+              },
+
+
+              "orderDetails": {
+                "required": [
+                  "user_id"
+                ],
+                "properties": {
+  
+                    "user_id" :{
+                      "type": "string"
+                    }
+                  }
+                }
 
 
 
